@@ -2,7 +2,7 @@
 <h1 align=center>squishOS</h1>
 
 <h2 align=center>WORK IN PROGRESS</h2>
-In-game Gorilla Tag mod (menu) injector/loader. Works only on Tonie Macaroni's [Computer Interface](https://github.com/ToniMacaroni/ComputerInterface)
+In-game Gorilla Tag mod (menu) injector/loader. Works only on Tonie Macaroni's Computer Interface
 
 
 ## Badges
@@ -36,7 +36,7 @@ Make a [Pull Request](https://github.com/new-hue/squishOS/pulls) if you want to 
 
 
 ## Acknowledgements
-
+ - [Computer Interface](https://github.com/ToniMacaroni/ComputerInterface) Wouldn't have been able to do this with out it.
  - [Guided Hacking](https://guidedhacking.com/threads/c-dll-injector-tutorial-how-to-inject-a-dll.14915/) for the basic C# injector.
  - [Monke Map Loader](https://github.com/Vadix88/MonkeMapLoader/) load .dll files from the ``Mods`` folder into the computer interface.
 
