@@ -1,7 +1,7 @@
 
 <h1 align=center>squishOS</h1>
 
-## WORK IN PROGRESS
+<h2 align=center>WORK IN PROGRESS</h2>
 In-game Gorilla Tag mod (menu) injector/loader. Works only on Tonie Macaroni's [Computer Interface](https://github.com/ToniMacaroni/ComputerInterface)
 
 
