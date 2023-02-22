@@ -7,7 +7,7 @@ In-game Gorilla Tag mod (menu) injector/loader. Works only on Tonie Macaroni's [
 
 ## Badges
 
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://raw.githubusercontent.com/new-hue/squishOS/main/LICENSE)
 [![Made With Love](https://img.shields.io/badge/made%20with-love-ff69b4)](https://github.com/new-hue/squishOS)
 
 
