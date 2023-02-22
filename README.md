@@ -19,14 +19,14 @@ In-game Gorilla Tag mod (menu) injector/loader. Works only on Tonie Macaroni Com
 - Leaves no traces of mods *ever* being injected!
 
 
-Demo
+# Demo
 
 Coming Soon!
 
 
-## Installation
+<!--## Installation-->
 
-I
+
     
 ## Contributing
 
