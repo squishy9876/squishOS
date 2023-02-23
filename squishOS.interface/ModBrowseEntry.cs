@@ -1,6 +1,7 @@
 using System;
 using ComputerInterface.Interfaces;
 
+// name that shows up on computer interface
 namespace squishOS.ComputerInterface
 {
     public class MapBrowseEntry : IComputerModEntry
