@@ -28,9 +28,9 @@ namespace squishOS.ComputerInterface
 
         private ModRoot _modResponse;
 
-        private ModBrowseOptions _options = new MapBrowseOptions();
+        private ModBrowseOptions _options = new modBrowseOptions();
 
-        private MapBrowseView(HttpClient client)
+        private modBrowseView(HttpClient client)
         {
             _selectionHandler = new UISelectionHandler(EKeyboardKey.Up, EKeyboardKey.Down, EKeyboardKey.Enter);
             _selectionHandler.OnSelected += OnModSelected;
@@ -38,6 +38,7 @@ namespace squishOS.ComputerInterface
     }
 }
 
+// damn i hope this doesnt break
 public override async void OnShow(object[] args)
 {
     base.OnShow(args);
@@ -61,15 +62,75 @@ public override async void OnShow(object[] args)
             str.Append("by squishy#9555");
             str.Repeat("=", SCREEN_WIDTH);
             var str = new StringBuilder();
-            // 
             str.AppendClr("[^ | v] SELECT MOD   |   [ENTER] INJECT/UNINJECT").AppendLine();
         });
 
         private void DrawNoMods(StringBuilder str)
         {
-            // TODO: FINISH CHECKING DIRECTORY
             str.Append("NO MODS FOUND.").Repeat("\n", 2);
             str.Append("If you have mods in the folder").AppendLine();
             str.Append(" make sure they are in the right format, .dll").Repeat("\n", 2);
             str.BeginCenter().Append("PRESS ANY BUTTON TO CONTINUE...").EndAlign();
         }
+
+        private void OnModSelected(int _)
+        {
+            if (_selectedMod == null) return;
+
+            ShowView<ModBrowseDetailsView>(_selectedmod);
+        }
+
+
+         public override async void OnKeyPressed(EKeyboardKey key)
+        {
+    if (_isError)
+    {
+        _isError = false;
+        ReturnToMainMenu();
+        return;
+    }
+
+    if (_selectionHandler.HandleKeypress(key))
+    {
+        var selectedIdx = _pageHandler.GetAbsoluteIndex(_selectionHandler.CurrentSelectionIndex);
+        if (_modList[selectedIdx] == null) _selectionHandler.MoveSelectionUp();
+        DrawList();
+        return;
+    }
+
+    if (_pageHandler.HandleKeyPress(key))
+    {
+        _selectionHandler.CurrentSelectionIndex = 0;
+
+        if (_pageHandler.CurrentPage == _pageHandler.MaxPage)
+        {
+            if (_modResponse.Data.Count > _modList.Count)
+            {
+                int currentPage = _pageHandler.CurrentPage;
+                _modResponse = await GetModsAsync(PageSize, _pageHandler.CurrentPage);
+                _modList.RemoveAt(_modList.Count - 1);
+                _modList.AddRange(_modResponse.Data.mods);
+                _modList.Add(null);
+                _pageHandler.SetElements(_modList.ToArray());
+                _pageHandler.CurrentPage = currentPage;
+            }
+        }
+
+        DrawList();
+        return;
+         }
+    }
+    
+       switch (key)
+{
+    case EKeyboardKey.Option1:
+        ShowView<MapBrowseOptionsView>(_options);
+        break;
+    case EKeyboardKey.Back:
+        PreviewOrb.HideOrb();
+        ReturnToMainMenu();
+        break;
+}
+		}
+	}
+}
